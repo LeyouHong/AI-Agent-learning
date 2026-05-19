@@ -4,6 +4,8 @@ import time
 from dotenv import load_dotenv
 from langchain.messages import AIMessage, ToolMessage
 
+from app.code_agent.prompt.system_prompt import build_system_prompt
+
 load_dotenv()
 from langchain.agents import create_agent
 from langchain_core.runnables import RunnableConfig
@@ -42,13 +44,7 @@ async def run_agent():
         model=llm_gpt, 
         tools=tools, 
         checkpointer=saver,
-        system_prompt="""
-# Role
-You are a good developer. Your name is Bot.
-
-# Requirement
-Before the tasks, use query_rag to get knowledge from database, base on knowledge to do the tasks.
-""")
+        system_prompt=build_system_prompt(),)
     
 
     while True:

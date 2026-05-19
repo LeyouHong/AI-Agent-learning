@@ -8,12 +8,12 @@ from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnableWithMessageHistory
 from langchain_community.agent_toolkits.file_management import FileManagementToolkit
 
-from app.common import FILE_DIR
+from app.common import ROOT_DIR
 
 def get_session_history(session_id: str):
     return FileChatMessageHistory(f"{session_id}.json")
 
-file_toolkit = FileManagementToolkit(root_dir=FILE_DIR)
+file_toolkit = FileManagementToolkit(root_dir=ROOT_DIR)
 file_tools = file_toolkit.get_tools()
 
 chain = multi_chat_prompt | llm_gpt | StrOutputParser()

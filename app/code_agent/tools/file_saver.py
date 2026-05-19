@@ -7,12 +7,12 @@ from typing import Any, Optional, Sequence
 from langgraph.checkpoint.base import BaseCheckpointSaver, ChannelVersions, Checkpoint, CheckpointMetadata, CheckpointTuple
 from langchain_core.runnables import RunnableConfig
 
-from app.common import FILE_DIR
+from app.common import ROOT_DIR
 
 class FileSaver(BaseCheckpointSaver[str]):
     def __init__(
         self,
-        base_path: Path = Path(FILE_DIR) / "checkpoint"
+        base_path: Path = Path(ROOT_DIR) / "app/temp/checkpoint"
     ):
         super().__init__()
         self.base_path = base_path

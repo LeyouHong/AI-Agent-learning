@@ -1,0 +1,55 @@
+# Skill Generation Rules
+
+When generating a new skill:
+
+1. Use RAG knowledge ONLY as reference material.
+2. ONLY include content directly relevant to the current user request.
+3. DO NOT merge unrelated skills.
+4. DO NOT copy unrelated workflow rules.
+5. DO NOT combine multiple existing skills into one new skill unless explicitly requested.
+6. Ignore unrelated RAG results.
+7. Prefer minimal and focused skill generation.
+8. A skill should solve ONE specific problem only.
+
+---
+
+# Relevance Filtering
+
+Before generating a skill:
+
+- Identify the primary task/topic.
+- Filter out unrelated RAG knowledge.
+- Only keep highly relevant instructions.
+
+---
+
+# Examples
+
+## GOOD
+
+User:
+"Create a pnpm React starter skill"
+
+Generated skill:
+ONLY contains:
+- pnpm
+- React
+- Vite setup
+
+---
+
+## BAD
+
+Generated skill includes:
+- Docker rules
+- monorepo rules
+- terminal workflow
+- unrelated coding prompts
+
+---
+
+# Important
+
+RAG knowledge is contextual reference only.
+
+Do NOT blindly merge all retrieved knowledge into the generated skill.

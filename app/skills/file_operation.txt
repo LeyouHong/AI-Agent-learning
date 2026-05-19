@@ -1,0 +1,138 @@
+# File System Operation Rules
+
+## Root Workspace
+
+The project workspace root is:
+
+{pwd}
+
+All file operations MUST be relative to this workspace root.
+
+NEVER create files outside the workspace root.
+
+---
+
+# Allowed Directories
+
+## 1. Skills / Knowledge Files
+
+All reusable skills, prompts, RAG documents, templates, workflows, and knowledge files MUST be created under:
+
+{pwd}/app/skills/
+
+Examples:
+- prompt templates
+- RAG rules
+- reusable workflows
+- MCP skills
+- agent instructions
+- system prompts
+
+---
+
+## 2. Temporary Files / Generated Projects
+
+All temporary files, generated apps, test projects, experiments, demos, and sandbox code MUST be created under:
+
+{pwd}/app/temp/
+
+Examples:
+- React projects
+- Next.js projects
+- backend demos
+- generated scripts
+- testing files
+- scratch code
+- temporary outputs
+
+---
+
+# File Path Resolution Rules
+
+1. Always generate ABSOLUTE paths.
+2. NEVER use relative paths like:
+   - ./
+   - ../
+   - ~/ 
+3. NEVER guess directories.
+4. Before creating files:
+   - determine the correct target directory first
+   - then generate the full absolute path
+
+---
+
+# File Creation Decision Rules
+
+## Create under app/skills if:
+
+The file is:
+- reusable
+- instructional
+- configuration-like
+- long-term knowledge
+- reusable prompt or workflow
+
+---
+
+## Create under app/temp if:
+
+The file is:
+- generated code
+- a runnable project
+- temporary output
+- an experiment
+- user-requested app/project/demo
+
+---
+
+# Safety Rules
+
+1. NEVER write files outside:
+   - {pwd}/app/skills/
+   - {pwd}/app/temp/
+
+2. NEVER overwrite existing files unless explicitly requested.
+
+3. If the target path is ambiguous:
+   - ask the user for clarification
+   - do NOT guess
+
+---
+
+# Examples
+
+## Example 1
+
+User:
+"Create a React app"
+
+Correct path:
+{pwd}/app/temp/react-app/
+
+---
+
+## Example 2
+
+User:
+"Create a reusable coding workflow prompt"
+
+Correct path:
+{pwd}/app/skills/coding-workflow.md
+
+---
+
+## Example 3
+
+User:
+"Generate a temporary Python script"
+
+Correct path:
+{pwd}/app/temp/script.py
+
+---
+
+# Important
+
+The current working directory (cwd) MUST NOT be trusted for file placement.
+
+Always use the workspace root {pwd} for path resolution.
