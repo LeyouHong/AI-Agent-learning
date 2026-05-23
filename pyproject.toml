@@ -17,6 +17,7 @@ dependencies = [
     "langsmith>=0.8.0",
     "openai>=2.33.0",
     "pydantic>=2.13.3",
+    "pymysql>=1.2.0",
     "selenium>=4.44.0",
 ]
 
